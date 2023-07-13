@@ -1,16 +1,15 @@
-<!-- wireGetRecordDynamicContact.html -->
 <template>
     <lightning-card>
-        <template lwc:if={account.data}>
+        <template lwc:if={accountRecords}>
             <div class="slds-m-around_medium">
                 <h2 slot="title">
                     <lightning-icon icon-name="custom:custom69" size="small"></lightning-icon>
-                    <a onclick={handleClick}><b>&nbsp; {name}</b></a>
+                    <a onclick={handleClick}><b>&nbsp; {accountRecords.Name}</b></a>
                 </h2>
                 <div slot="body">
                 <br>
-                <p><b>Primary Phone Number: </b>{phone}</p> <br>
-                <p><b>Band's Description: </b>{description}</p>
+                <p><b>Primary Phone Number: </b>{accountRecords.Phone}</p> <br>
+                <p><b>Band's Description: </b>{accountRecords.Description}</p>
                 </div>
             </div>
         </template>

@@ -1,0 +1,27 @@
+<apex:page standardController="Performance__c" lightningStylesheets="true" recordSetVar="pers" tabStyle="Performance__c" sidebar="false">
+    <apex:form>
+        <apex:pageBlock title="Performances"> 
+            <apex:pageMessages> </apex:pageMessages>
+                
+                <apex:pageBlockButtons> 
+                    <apex:commandButton value="Save" action="{!save}"> </apex:commandButton>                
+                </apex:pageBlockButtons>
+
+                <apex:pageBlockTable title="Performance List" value="{!pers}" var= "p"> 
+                    <apex:column value="{!p.Name}"> </apex:column>
+                    <apex:column headerValue="Act"> 
+                        <apex:inputField value="{!p.Act__c}"> </apex:inputField>
+                    </apex:column>
+                    
+                    <apex:column headerValue="Festvial"> 
+                        <apex:inputField value="{!p.Festival__c}"> </apex:inputField>
+                    </apex:column>
+
+                    <apex:column headerValue="Stage"> 
+                        <apex:inputField value="{!p.Stage__c}"> </apex:inputField>
+                    </apex:column>
+                </apex:pageBlockTable>
+
+            </apex:pageBlock>
+        </apex:form>
+</apex:page>

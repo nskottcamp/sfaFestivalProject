@@ -22,9 +22,9 @@ public without sharing class festivalsLWCHandler {
         return returnMap; 
     }
 
-    //currently not being used
     @AuraEnabled(cacheable=true) 
-    public static List<Contact> getRelatedContacts(String recordId) {
-        return [SELECT id, FirstName, LastName, Phone, Email FROM Contact WHERE AccountId = :recordId];
+    public static Account getAccounts(String recordId) {
+        return [SELECT Name, Phone, Description FROM Account WHERE id = :recordId LIMIT 1];
     }
 }
+
