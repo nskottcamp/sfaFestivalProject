@@ -1,0 +1,37 @@
+<template>
+        <lightning-card title="Festival Map">
+            <div class="slds-grid slds-var-m-bottom_small slds-box">
+                <div class="slds-col">
+                    <lightning-combobox
+                            name="Status"
+                            label="Status"
+                            value={statusPick}
+                            placeholder="Select Status"
+                            options={options}
+                            onchange={handleChange} ></lightning-combobox>
+                </div>
+            </div>
+        </lightning-card>
+        <template if:true={displayedMarkers.length}>
+        <lightning-map
+            map-markers={displayedMarkers}
+            markers-title="Markers"
+            onmarkerselect={handleMarkerSelect}
+            selected-marker-value={selectedMarkerValue}
+            list-view="visible"
+            zoom-level="6"
+        >
+        </lightning-map>
+        </template>
+        <template if:false={displayedMarkers.length}>
+            <lightning-card>
+                <div class="slds-text-align_center">
+                    <p>No records are available for this status</p>
+                </div>
+            </lightning-card>
+        </template>
+        <template if:true={openModal}>
+                <c-festival-form record-id={selectedMarkerValue} onclose={closeModal} onsuccessgo={handleSuccess}></c-festival-form>
+        </template>
+</template>
+

@@ -1,0 +1,18 @@
+<!-- wireGetRecordDynamicContact.html -->
+<template>
+    <lightning-card>
+        <template lwc:if={account.data}>
+            <div class="slds-m-around_medium">
+                <h2 slot="title">
+                    <lightning-icon icon-name="custom:custom69" size="small"></lightning-icon>
+                    <a onclick={handleClick}><b>&nbsp; {name}</b></a>
+                </h2>
+                <div slot="body">
+                <br>
+                <p><b>Primary Phone Number: </b>{phone}</p> <br>
+                <p><b>Band's Description: </b>{description}</p>
+                </div>
+            </div>
+        </template>
+    </lightning-card>
+</template>
