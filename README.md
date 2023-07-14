@@ -13,7 +13,13 @@ The context of the project was to create a Salesforce Org that could be used to 
 - Build a functional data model that would allow for the recording of multiple festivals with lots of performances at specifc times/places.
 - Make pages smart - make an org suitable for a small team, make data dense but easy to read, use LWCs to show cross object information in one place.
 - Utilize Apex and LWCs together to sharpen my skills.
-- Create components that could be used for multiple objects and are versatile. 
+- Create components that could be used for multiple objects and are versatile.
+
+### Portfolio Site
+
+You can see a working version of my Festival Map component, complete with test data and an hourly running weather API by following the link below. This is purely for my portfolio - some data might become out of date over time. 
+
+https://hogfarmhideaway-dev-ed.develop.my.site.com/
 
 ## Apex Classes:
 **Scheduled Weather API** - this is an Apex class which implements the Scheduledable interface. This can be called from the UI or anonymous apex to start the scheduled running on the 
