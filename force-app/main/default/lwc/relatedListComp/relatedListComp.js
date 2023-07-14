@@ -8,6 +8,7 @@ export default class RelatedListComp extends LightningElement {
 
     //message variables and current selected festival from map component 
     @api festivalId = '';
+    @api weatherReport = '';
     subscription = null;
     displayedActs = [];
 
@@ -88,8 +89,8 @@ export default class RelatedListComp extends LightningElement {
     handleMessage(message) {
         console.log('14')
         this.festivalId = message.recordId
-        console.log(this.festivalId.selectedMarkerValue)
-        this.handleSelection(this.festivalId.selectedMarkerValue); 
+        this.weatherReport = message.weatherReport
+        this.handleSelection(this.festivalId); 
     }
 
     //unsubscribe

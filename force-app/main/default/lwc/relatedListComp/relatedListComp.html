@@ -1,12 +1,12 @@
 <template>
     <lightning-card>
-        <div class="slds-text-heading_medium slds-var-m-around_medium">
-            <h4>This Festival's Hourly Weather Report</h4>
-            <lightning-record-view-form record-id={festivalId.selectedMarkerValue} object-api-name="Festivals__c">
-                <lightning-output-field field-name="Weather_Report__c"></lightning-output-field>
-            </lightning-record-view-form>
+        <div class="slds-text-heading_medium slds-panel__header">
+            <h4>This Festival's Hourly Weather Report</h4> <br>
         </div>
-        <div class="slds-text-heading_medium slds-var-m-around_medium">
+        <div class="slds-var-m-around_small" slds-panel__body>
+            <lightning-formatted-text value={weatherReport}></lightning-formatted-text> 
+        </div>
+        <div class="slds-text-heading_medium slds-panel__header">
             <h4>This Festival's Preformers</h4>
         </div> 
         <template lwc:if={displayedActs.length}>

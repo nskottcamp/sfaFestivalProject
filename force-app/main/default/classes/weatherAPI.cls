@@ -1,4 +1,4 @@
-global class weatherAPI {
+global without sharing class weatherAPI {
     global Map<Id, String> m1; 
 
     
@@ -47,15 +47,18 @@ global class weatherAPI {
             fieldValue = '';
             returnedAlert = false; 
             i = 0;
+            Integer j = 1;
             for(Object o: featureList){
                 Map<String, Object> loopMap1 = (Map<String, Object>)featureList[i];
                 Map<String, Object> loopMap2 = (Map<String, Object>)loopMap1.get('properties');
                 String loopCounty = (String)loopMap2.get('areaDesc');
                 //system.debug(loopMap1); 
                 if(loopCounty.contains(f.County__c)){
+                    fieldValue += ('Weather Alert ' + j + ': \n \n');
                     fieldValue += (String)loopMap2.get('description');
-                    fieldValue += '<br> <br>';
+                    fieldValue += '\n \n';
                     returnedAlert = true;
+                    j++;
                 }
                 i++;
             }

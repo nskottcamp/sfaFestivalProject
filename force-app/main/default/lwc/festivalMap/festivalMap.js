@@ -33,23 +33,27 @@ export default class FestivalMap extends LightningElement {
 
     @wire(festivalQuerier, {statusCode: 'ALL'})
     wiredAccounts({error, data}) {
-        console.log('1');
+        console.log('   ');
         if (data) {
             this.results = data; 
+            console.log('1');
             data.forEach(dataItem => {
                 this.mapMarkerArray = [...this.mapMarkerArray,
                 {
                     location: {
                         City: dataItem.Festival_Location__City__s,
                         Country: dataItem.Festival_Location__CountryCode__s,
-                        PostalCode:  dataItem.Festival_Location__PostalCode__s,
+                        PostalCode: dataItem.Festival_Location__PostalCode__s,
                         State: dataItem.State_Code__c,
                         Street: dataItem.Festival_Location__Street__s
                     },
                     icon: 'action:map',
                     title: dataItem.Name,
-                    value: dataItem.Id,
-                    status: dataItem.Status__c 
+                    value: {
+                        weather: dataItem.Weather_Report__c,
+                        id: dataItem.Id
+                    },
+                    status: dataItem.Status__c,
                 }
                 ];
             });
@@ -62,14 +66,16 @@ export default class FestivalMap extends LightningElement {
 
     handleMarkerSelect(event) {
         console.log('2');
-        this.selectedMarkerValue = event.target.selectedMarkerValue;
+        console.log(event.detail);
+        this.selectedMarkerValue = event.detail.selectedMarkerValue.Id;
+        this.sendMessageService(event.detail)
         // this.openModal = true; 
-        this.sendMessageService(event.detail);
     }
 
-    sendMessageService(festivalId){
+    sendMessageService(festival){
         console.log('3')
-        publish(this.messageContext, FestivalMC, {recordId: festivalId});
+        console.log(festival.selectedMarkerValue.id);
+        publish(this.messageContext, FestivalMC, {recordId: festival.selectedMarkerValue.id, weatherReport: festival.selectedMarkerValue.weather});
     }
 
     // handleSuccess(event) { 
@@ -87,10 +93,10 @@ export default class FestivalMap extends LightningElement {
 
     // }
 
-    closeModal() { 
-        console.log('5');
-        this.openModal = false; 
-    }
+    // closeModal() { 
+    //     console.log('5');
+    //     this.openModal = false; 
+    // }
 
     // updateFestival(event) { 
     //     console.log('6');

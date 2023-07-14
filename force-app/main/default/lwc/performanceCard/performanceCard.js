@@ -15,7 +15,6 @@ export default class FestivalCard extends NavigationMixin(LightningElement){
     accountErrors;
     wireApexResultsActs;
 
-    
     @wire(getAccounts, {recordId: '$recId'})
     wiredActs(accountResults) {
         console.log('20')
@@ -23,7 +22,6 @@ export default class FestivalCard extends NavigationMixin(LightningElement){
         if(accountResults.data){
             console.log('21')
             this.accountRecords = accountResults.data;
-            console.log(accountResults.data);
             this.accountErrors = undefined;
         }
         if(accountResults.error){
@@ -32,7 +30,6 @@ export default class FestivalCard extends NavigationMixin(LightningElement){
         }
     }
     
-
     handleClick() {
         this[NavigationMixin.GenerateUrl]({ 
             type: 'standard__recordPage',
